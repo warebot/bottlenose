@@ -12,4 +12,5 @@ This project demonstrates the functionality of keepalive messages in a producer-
 #### Installation and Usage
     Check out code
     cd [cloned directory]
+    run "npm install"
     run "node app.js"
