@@ -11,8 +11,6 @@ var connections = {}
 function Server(houseKeeper) {
     this.host = config.HOST
     this.socket = config.SERVER_SOCKET
-    this.houseKeepingInterval = config.HOUSEKEEPING_INTERVAL
-    this.timeMessageInterval = config.TIME_MSG_INTERVAL
     this.houseKeeper = houseKeeper
 }
 
@@ -53,13 +51,13 @@ Server.prototype.start = function () {
         for (var clientId in connections) {
             connections[clientId].clientSocket.write("[TIME MSG] " + (new Date()).getTime());
         }
-    }, this.timeMessageInterval);
+    }, config.TIME_MSG_INTERVAL);
 
     // Triggers a housekeeping sweep every tick based on the `houseKeepingInterval`
     setInterval(function () {
         console.log("------ HOUSEKEEPING -----");
         connections = self.houseKeeper.sweep(connections);
-    }, this.houseKeepingInterval);
+    }, config.HOUSEKEEPING_INTERVAL);
 
     server.on('error', function (e) {
         if (e.code == 'EADDRINUSE') {
