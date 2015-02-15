@@ -46,14 +46,14 @@ Server.prototype.start = function () {
 
     console.log("[SERVER] binding to " + this.socket);
 
-    // Triggers a TIME MSG for every tick configured by `timeMessageInterval`
+    // Triggers a TIME MSG for every tick configured by `TIME_MSG_INTERVAL`
     setInterval(function () {
         for (var clientId in connections) {
             connections[clientId].clientSocket.write("[TIME MSG] " + (new Date()).getTime());
         }
     }, config.TIME_MSG_INTERVAL);
 
-    // Triggers a housekeeping sweep every tick based on the `houseKeepingInterval`
+    // Triggers a housekeeping sweep every tick based on the `HOUSEKEEPING_INTERVAL`
     setInterval(function () {
         console.log("------ HOUSEKEEPING -----");
         connections = self.houseKeeper.sweep(connections);
