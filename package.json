@@ -1,0 +1,26 @@
+{
+  "name": "bottlenose",
+  "version": "1.0.0",
+  "description": "Simple NTP Service",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warebot/bottlenose.git"
+  },
+  "author": "Mina Naguib (@warebot)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warebot/bottlenose/issues"
+  },
+  "homepage": "https://github.com/warebot/bottlenose",
+  "dependencies": {
+    "mocha": "^2.1.0"
+  }
+}
